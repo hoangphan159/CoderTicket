@@ -1,0 +1,13 @@
+.container
+  .row
+    .col-md-3
+    .col-md-6
+      = simple_form_for @event do |f|
+        = f.input :name
+        = f.input :starts_at, as: :string, input_html: {type: :date}, required: false, :error => false
+        = f.input :ends_at, as: :string, input_html: {type: :date}
+        = f.association :venue, required: false, :error => false, include_blank: false, include_hidden: false
+        = f.input :hero_image_url, label: "Image"
+        = f.input :extended_html_description, label: "Description", required: false, :error => false
+        = f.association :category, required: false, :error => false, include_blank: false, include_hidden: false
+        = f.button :submit, class: 'btn-success'
