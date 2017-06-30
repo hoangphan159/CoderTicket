@@ -4,9 +4,42 @@
       <img class="card-img-top" src="<%= event.hero_image_url %>">
       <div class="card-block">
         <h4 class="card-title"><%= event.name %></h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-        </p>
+        <div class="card-text">
+          <div class="pull-left" style="padding-right: 10px">
+            <%= fa_icon 'clock-o' %>
+          </div>
+          <div class="time-details">
+            <%= event.starts_at.strftime('%A, %d %b %Y %l:%M %p') %>
+          </div>
+
+          <div class="pull-left" style="padding-right: 10px">
+            <%= fa_icon 'map-marker' %>
+          </div>
+          <div class="venue-details">
+           <%= event.venue.name %>
+           <br/>
+           <%= event.venue.full_address %>
+          </div>
+        </div>
+
+        <% if event.user == @current_user %>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <%= link_to "Edit", edit_event_path(event), style: "color: blue"%>
+            </li>
+
+            <li class="list-group-item">
+              <%= link_to "Create Ticket Type", new_event_ticket_path(event), style: "color: blue" %>
+            </li>
+
+            <% if event.published_at.nil? %>
+              <li class="list-group-item">
+                <%= link_to "Publish", publish_event_path(event), style: "color: blue"%>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
     </div>
   <% end %>
-</div>  
+</div>

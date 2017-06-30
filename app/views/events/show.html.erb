@@ -7,7 +7,7 @@
       </p>
       <h1> Hot Events </h1>
       <div class="ticket-list">
-        <% @event.ticket_types.each do |ticket_type| %>
+        <% @event.tickets.each do |ticket_type| %>
           <div class="row">
             <div class="col-md-6">
               <%= ticket_type.name %>
@@ -19,7 +19,7 @@
           </div>
           <div class="clearfix"></div>
         <% end %>
-        <%= link_to new_event_ticket_path(@event) do %>
+        <%= link_to buy_event_tickets_path(@event) do %>
           <button class='btn btn-lg btn-block btn-danger'> BOOK NOW </button>
         <% end %>
       </div>
@@ -31,11 +31,11 @@
         <div class="pull-left">
           <%= fa_icon 'clock-o' %>
         </div>
-        <div class="time-details"> 
-          <%= @event.starts_at.strftime('%A, %d %b %Y %l:%M %p') %> 
+        <div class="time-details">
+          <%= @event.starts_at.strftime('%A, %d %b %Y %l:%M %p') %>
         </div>
 
-        
+
 
         <div class="pull-left">
           <%= fa_icon 'map-marker' %>
@@ -53,7 +53,7 @@
           <%= @event.extended_html_description.html_safe %>
         </div>
 
-      </div>  
+      </div>
     </div>
   </div>
 </div>

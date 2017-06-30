@@ -1,0 +1,13 @@
+.container
+  .row
+    .col-md-3
+    .col-md-6
+      .form-header
+        %h3 New Venue
+
+      = simple_form_for @venue do |f|
+        = f.input 'name'
+        = f.input 'full_address'
+        = f.association 'region'
+
+        = f.button :submit, class: 'btn btn-primary'
