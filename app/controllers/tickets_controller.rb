@@ -9,6 +9,11 @@ class TicketsController < ApplicationController
     @event = Event.find(params[:event_id])
   end
 
+  def purchase
+    flash[:success] = "Your tickets has been purchased successfully! Thank you!"
+    redirect_to upcoming_path
+  end
+
   def create
     @event = Event.find(params[:event_id])
     @ticket = @event.tickets.build(ticket_params)

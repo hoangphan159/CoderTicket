@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :tickets do
       collection do
         get :buy
+        post :purchase
       end
     end
   end
