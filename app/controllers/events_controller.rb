@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   def publish
     @event = Event.find(params[:id])
 
-    if @event.tickets.any? && @event.published_at
+    if @event.tickets.any? && @event.published_at.nil?
       @event.published_at = Time.now()
       if @event.save
         flash[:success] = "Successfully published..."
